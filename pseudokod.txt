@@ -1,0 +1,70 @@
+Ei - maksymalna odleglosc miedzy obrazkami, ktore są takie same
+Et - maskymalna różnica czasowa dwóch cykli
+max_t - maksymalna długosc cyklu (szukamy cyklu w szerokości 2 * max_t)
+
+input - n klatek
+output - indexy odpowiadające cyklom (lista kolejnych indexów)
+
+array[] generowanie_wykresu_roznic(array klatki[n]) {
+	fopen(file);
+	for i = 1 : n {
+		wynik[i] = klatki[i] - klatki[0];
+		file.write(matrix[n]);
+	}
+	fclose(file);
+	return wynik;
+}
+
+array[] lista_indexow_kandydatow(array roznice_klatek[n]) {
+	array wynik[n];
+	wynik[0] = 0
+	
+	bool powyzej = true;
+	
+	/*
+	for i = 1 : n {
+		if(powyzej) {
+			powyzej = (roznice_klatek[i] > Ei) ? true : false;
+		} else {
+			powyzej = (roznice_klatek[i] > Ei) ? true : false;
+		}
+	}
+	*/
+	
+}
+
+array[] wykrywanie_cykli(array lista_indexow[n]) {
+	start = 0
+	end = 0;
+	for i = 1 : n { //szukanie koncowego indeksu
+		if(lista_indexow[i] - lista_indexow[0] >= 2 * max_t) {
+			end = i;
+			break;
+		}
+	}
+	poczatek_kandydata = lista_indexow[0];
+	koniec_kandydata   = lista_indexow[1];
+	
+	pierwszy_iterator = lista_indexow[1];
+	drugi_iterator    = lista_indexow[2];
+	
+	
+	for poczatek_okresu = 1, koniec_okresu = 2 : end {
+		if ( ! porownywanie_periodow(poczatek_kandydata, koniec_kandydata, pierwszy_iterator, drugi_iterator) ) {
+			koniec_kandydata = drugi_iterator
+		}
+		pierwszy_iterator = lista_indexow[i+1]
+		drugi_iterator    = lista_indexow[j+1]
+	}
+}
+
+bool porownywanie_periodow(int start1, int end1, start2, int end2) {
+	//todo
+	//czy maja taka sama dlugosc (nie wieksza roznica od episolona dlugosci)
+	//roznica miedzy obrazkami w konkretnych cyklach (bo roznica w pixelach moze byc identyczna ale obrazki moga byc rozne)
+	//
+}
+
+
+
+
