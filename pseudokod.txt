@@ -26,11 +26,11 @@ array[] lista_indexow_kandydatow(array roznice_klatek[n]) {
 		if(powyzej) {
 			powyzej = (roznice_klatek[i] > Ei) ? true : false;
 		} else {
-			powyzej = (roznice_klatek[i] > Ei) ? true : false;
+			
+			powyzej = (roznice_klatek[i] > Ei) ? /*tutaj dzialamy jest kandydat*/  : false;
 		}
 	}
 	*/
-	
 }
 
 array[] wykrywanie_cykli(array lista_indexow[n]) {
