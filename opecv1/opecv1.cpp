@@ -42,35 +42,36 @@ int main(int argc, char* argv[])
 
 	vector<Mat> frames;
 
-	while (1)
-	{
-		Mat frame;
-		bool bSuccess = cap.read(frame); // read a new frame from video
-		if (!bSuccess) //if not success, break loop
-		{
-			cout << "Cannot read the frame from video file" << endl;
-			break;
-		}
+	//while (1)
+	//{
+	//	Mat frame;
+	//	bool bSuccess = cap.read(frame); // read a new frame from video
+	//	if (!bSuccess) //if not success, break loop
+	//	{
+	//		cout << "Cannot read the frame from video file" << endl;
+	//		break;
+	//	}
 
-		//Vec3b color = frame.at<Vec3b>(ox, oy);
-		frames.push_back(frame); 
+	//	//Vec3b color = frame.at<Vec3b>(ox, oy);
+	//	frames.push_back(frame); 
 
-		imshow("MyVideo", frame); //show the frame in "MyVideo" window
+	//	imshow("MyVideo", frame); //show the frame in "MyVideo" window
 
-		if (waitKey(30) == 27) //wait for 'esc' key press for 30 ms. If 'esc' key is pressed, break loop
-		{
-			cout << "esc key is pressed by user" << endl;
-			break;
-		}
-		cout << frames.size();
+	//	if (waitKey(30) == 27) //wait for 'esc' key press for 30 ms. If 'esc' key is pressed, break loop
+	//	{
+	//		cout << "esc key is pressed by user" << endl;
+	//		break;
+	//	}
+	//	// klatki to frames
+	//	// max_t - d³ugoœæ cyklu to ok 3500 ms  czyli ok 105 klatek
+	//	// Ei - empirycznie ale jak dla mnie trzeba daæ co najmniej 3033493, jeszcze zale¿y czy bêdziemy to 
+	//	// rzucaæ do szaroœci i wycinaæ pod³ogê czy nie . 
+	//	// 
 
-		// klatki to frames
-		// max_t - d³ugoœæ cyklu to ok 3500 ms  czyli ok 105 klatek
-		// Ei - empirycznie ale jak dla mnie trzeba daæ co najmniej tysi¹c, jeszcze zale¿y czy bêdziemy to 
-		// rzucaæ do szaroœci i wycinaæ pod³ogê czy nie . 
-		// tu mo¿na u¿ywaæ Analyzer.cpp wiêc tam zaimplementujcie ten pseudokod 
-
-	}
+	//}
+	Analyzer analyzer;
+	analyzer.setData(frames);
+	analyzer.analyze(); 
 	
 	return 0;
 }
