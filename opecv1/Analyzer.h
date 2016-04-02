@@ -2,6 +2,9 @@
 #include <iostream>
 
 
+using namespace cv;
+using namespace std;
+
 class Analyzer {
 private:
 	std::vector<cv::Mat> data;

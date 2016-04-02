@@ -120,6 +120,14 @@ bool comparePeriods(int beg1, int end1, int beg2, int end2, vector<Mat> frames) 
 	return false; 
 }
 
+vector<int> groupIndexes(vector<int> indexes, int groupSize) {
+	vector<int> res;
+	for (int i = 0; i < indexes.size(); i += groupSize) {
+		res.push_back(indexes[i]);
+	}
+	return res;
+}
+
 vector<int> findCycles(vector<int> candidates, vector<Mat> frames) {
 	int candidateEndIndex = 1; 
 	int referencedPeriodStartIndex = 1;
@@ -140,13 +148,7 @@ vector<int> findCycles(vector<int> candidates, vector<Mat> frames) {
 	return groupIndexes(candidates, numberOfPeriodsConsidered);
 }
 
-vector<int> groupIndexes(vector<int> indexes, int groupSize) {
-	vector<int> res; 
-	for (int i = 0; i < indexes.size(); i += groupSize) {
-		res.push_back(indexes[i]); 
-	}
-	return res; 
-}
+
 
 void Analyzer::analyze(){
 	vector<long> diff = generateDifferenceVector(data);
