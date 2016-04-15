@@ -30,6 +30,15 @@
     <ClInclude Include="Analyzer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="IdealCycle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SignumComparatorStrategy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FramesUtils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -41,5 +50,22 @@
     <ClCompile Include="Analyzer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="IdealCycle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SignumComparatorStrategy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FramesUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="..\..\Nagrania poprawne\Nagywanie_2016_03_10_13_23_47_243.mp4">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="..\..\Nagrania poprawne\Nagywanie_2016_03_10_13_25_29_948.mp4">
+      <Filter>Resource Files</Filter>
+    </Media>
   </ItemGroup>
 </Project>

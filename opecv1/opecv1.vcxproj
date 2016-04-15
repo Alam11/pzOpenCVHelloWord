@@ -158,19 +158,29 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Analyzer.h" />
+    <ClInclude Include="FramesUtils.h" />
+    <ClInclude Include="IdealCycle.h" />
     <ClInclude Include="opecv1.h" />
+    <ClInclude Include="SignumComparatorStrategy.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Analyzer.cpp" />
+    <ClCompile Include="FramesUtils.cpp" />
+    <ClCompile Include="IdealCycle.cpp" />
     <ClCompile Include="opecv1.cpp" />
+    <ClCompile Include="SignumComparatorStrategy.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="..\..\Nagrania poprawne\Nagywanie_2016_03_10_13_23_47_243.mp4" />
+    <Media Include="..\..\Nagrania poprawne\Nagywanie_2016_03_10_13_25_29_948.mp4" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

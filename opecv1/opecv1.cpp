@@ -1,5 +1,4 @@
 #include "stdafx.h"
-
 #include "opencv2/highgui/highgui.hpp"
 #include <iostream>
 #include "opecv1.h"
@@ -25,7 +24,7 @@ int oy = 248;
 
 int main(int argc, char* argv[])
 {
-	VideoCapture cap("d:\\opecvProjects\\Nagrania poprawne\\Nagywanie_2016_03_10_13_23_47_243.mp4"); // open the video file for reading
+	VideoCapture cap("Nagywanie_2016_03_10_13_23_47_243.mp4"); // open the video file for reading
 
 	if (!cap.isOpened())  // if not success, exit program
 	{
@@ -42,37 +41,38 @@ int main(int argc, char* argv[])
 
 	vector<Mat> frames;
 
-	//while (1)
-	//{
-	//	Mat frame;
-	//	bool bSuccess = cap.read(frame); // read a new frame from video
-	//	if (!bSuccess) //if not success, break loop
-	//	{
-	//		cout << "Cannot read the frame from video file" << endl;
-	//		break;
-	//	}
+	while (1)
+	{
+		Mat frame;
+		bool bSuccess = cap.read(frame); // read a new frame from video
+		if (!bSuccess) //if not success, break loop
+		{
+			cout << "Cannot read the frame from video file" << endl;
+			break;
+		}
 
-	//	//Vec3b color = frame.at<Vec3b>(ox, oy);
-	//	frames.push_back(frame); 
+		//Vec3b color = frame.at<Vec3b>(ox, oy);
+		frames.push_back(frame); 
 
-	//	imshow("MyVideo", frame); //show the frame in "MyVideo" window
+		imshow("MyVideo", frame); //show the frame in "MyVideo" window
 
-	//	if (waitKey(30) == 27) //wait for 'esc' key press for 30 ms. If 'esc' key is pressed, break loop
-	//	{
-	//		cout << "esc key is pressed by user" << endl;
-	//		break;
-	//	}
+		if (waitKey(30) == 27) //wait for 'esc' key press for 30 ms. If 'esc' key is pressed, break loop
+		{
+			cout << "esc key is pressed by user" << endl;
+			break;
+		}
 	//	// klatki to frames
 	//	// max_t - d³ugoœæ cyklu to ok 3500 ms  czyli ok 105 klatek
 	//	// Ei - empirycznie ale jak dla mnie trzeba daæ co najmniej 3033493, jeszcze zale¿y czy bêdziemy to 
-	//	// rzucaæ do szaroœci i wycinaæ pod³ogê czy nie . 
+	//	// rzucaæ do szaroœci i wycinaæ pod³ogê czy nie .  teraz dalem 36 .. ale docelowo powinno byc mniej 
 	//	// 
 
-	//}
+	}
 	Analyzer analyzer;
 	analyzer.setData(frames);
-	analyzer.analyze(); 
-	
+	IdealCycle model = analyzer.createIdealCycle(); 
+	SignumComparatorStrategy strategy = SignumComparatorStrategy(model);
+	strategy.compare(); 
 	return 0;
 }
 

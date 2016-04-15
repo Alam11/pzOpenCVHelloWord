@@ -2,29 +2,15 @@
 #include "opencv2/highgui/highgui.hpp"
 #include <iostream>
 #include "Analyzer.h"
+#include "FramesUtils.h"
 #include <fstream>
 
 using namespace cv;
 using namespace std;
 
-const int EI = 3230422;
-const int ET = 10; 
-const int E_MAX_CYCLE_LENGTH = 150; 
-
-
-int distanceBetweenPoints(Vec3b a, Vec3b b) {
-	return abs(a[0] - b[0]) + abs(a[1] - b[1]) + abs(a[2] - b[2]);
-}
-
-long distanceBetweenFrames(Mat f1, Mat f2) {
-	long sum = 0;
-	for (int i = 0; i < f1.rows; i++) {
-		for (int j = 0; j < f1.cols; j++) {
-			sum += distanceBetweenPoints(f2.at<Vec3b>(i, j), f1.at<Vec3b>(i, j));
-		}
-	}
-	return sum; 
-}
+const int EI = 3830422;
+const int ET = 10;
+const int E_MAX_CYCLE_LENGTH = 150;
 
 vector<long> Analyzer::generateDifferenceVector(vector<Mat> frames) {
 	vector<long> res;
@@ -104,22 +90,6 @@ int Analyzer::computeFitness(int beg, int end) {
 	return res; 
 }
 
-bool comparePeriods(int beg1, int end1, int beg2, int end2, vector<Mat> frames) {
-	int timeDistance = abs(end1 - beg1 - (end2 - beg2));
-	if (timeDistance > ET) {
-		return false; 
-	}
-	int shift = beg2 - beg1; 
-	int intervalLength = min(end1 - beg1, end2 - beg2); 
-	for (int i = beg1; i < beg1 + intervalLength; i++) {
-		cout << distanceBetweenFrames(frames[i], frames[i + shift]); 
-	}
-	// TODO trzeba zdecydowaæ czy robimy sumê sprawdzamy czy jest tak 
-	// ogólnie dobrze  czy œredni¹ i czy tak przez ca³y czas mo¿ê byæ 
-	// trzeba zorobiæ odcienie szaroœci bo siê tego nie bêdzie wogle da³o debugowaæ 
-	return false; 
-}
-
 vector<int> groupIndexes(vector<int> indexes, int groupSize) {
 	vector<int> res;
 	for (int i = 0; i < indexes.size(); i += groupSize) {
@@ -150,7 +120,9 @@ vector<int> findCycles(vector<int> candidates, vector<Mat> frames) {
 
 
 
-void Analyzer::analyze(){
+IdealCycle Analyzer::createIdealCycle(){
 	vector<long> diff = generateDifferenceVector(data);
-	vector<int> candidates = chooseCandidates(diff); 
+	vector<int> candidates = chooseCandidates(diff);
+	IdealCycle model = IdealCycle(data, diff, candidates); 
+	return model;
 }

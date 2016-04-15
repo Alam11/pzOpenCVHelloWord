@@ -1,6 +1,6 @@
 #include "opencv2/highgui/highgui.hpp"
 #include <iostream>
-
+#include "SignumComparatorStrategy.h"
 
 using namespace cv;
 using namespace std;
@@ -13,10 +13,9 @@ public:
 	std::vector<long> Analyzer::generateDifferenceVector(std::vector<cv::Mat> frames);
 	void setData(std::vector<cv::Mat> data);
 	int computeFitness(int beg, int end);
-	void analyze(); 
+	IdealCycle createIdealCycle(); 
 	
 };
 
-bool comparePeriods(int beg1, int end1, int beg2, int end2, std::vector<cv::Mat> frames);
 
 vector<int> findCycles(vector<int> candidates, vector<Mat> frames);

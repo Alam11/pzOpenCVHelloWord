@@ -1,2 +1,8 @@
-﻿  Analyzer.cpp
+﻿  stdafx.cpp
+  SignumComparatorStrategy.cpp
+  opecv1.cpp
+  IdealCycle.cpp
+  FramesUtils.cpp
+  Analyzer.cpp
+  Generating Code...
   opecv1.vcxproj -> D:\opecvProjects\opecv1\x64\Debug\opecv1.exe
