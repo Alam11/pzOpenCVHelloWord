@@ -161,12 +161,14 @@
     <ClInclude Include="FramesUtils.h" />
     <ClInclude Include="IdealCycle.h" />
     <ClInclude Include="opecv1.h" />
+    <ClInclude Include="CompareWithCuttingStrategy.h" />
     <ClInclude Include="SignumComparatorStrategy.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Analyzer.cpp" />
+    <ClCompile Include="CompareWithCuttingStrategy.cpp" />
     <ClCompile Include="FramesUtils.cpp" />
     <ClCompile Include="IdealCycle.cpp" />
     <ClCompile Include="opecv1.cpp" />
