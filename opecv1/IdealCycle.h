@@ -1,3 +1,5 @@
+#ifndef IDEAL_CYCLE_H
+#define IDEAL_CYCLE_H
 #include "opencv2/highgui/highgui.hpp"
 #include <iostream>
 
@@ -15,3 +17,4 @@ public:
 	IdealCycle();
 	IdealCycle(const IdealCycle &cycle); 
 };
+#endif

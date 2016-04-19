@@ -1,6 +1,7 @@
 #include "opencv2/highgui/highgui.hpp"
 #include <iostream>
 #include "SignumComparatorStrategy.h"
+#include "CompareWithCuttingStrategy.h"
 
 using namespace cv;
 using namespace std;
