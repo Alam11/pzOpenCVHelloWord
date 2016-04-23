@@ -1,8 +1,7 @@
-#include "IdealCycle.h"
-class CompareWithCuttingStrategy
+#include "ComparatorStrategy.h"
+class CompareWithCuttingStrategy : ComparatorStrategy
 {
 public:
-	void setRawData(IdealCycle data);
 	void compare();
 	CompareWithCuttingStrategy();
 	CompareWithCuttingStrategy(IdealCycle data);

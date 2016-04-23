@@ -3,10 +3,6 @@
 #include "FramesUtils.h"
 
 
-void CompareWithCuttingStrategy::setRawData(IdealCycle dataArg)
-{
-	data = dataArg;
-}
 
 void CompareWithCuttingStrategy::compare()
 {

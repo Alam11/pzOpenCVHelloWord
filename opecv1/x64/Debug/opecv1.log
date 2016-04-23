@@ -1,11 +1,12 @@
-﻿  opecv1.cpp
-  Generating Code...
-  Compiling...
+﻿  stdafx.cpp
   SignumComparatorStrategy.cpp
+  opecv1.cpp
   IdealCycle.cpp
+  FramesUtils.cpp
   CompareWithCuttingStrategy.cpp
-c:\users\kranek\pzopencvhelloword\opecv1\comparewithcuttingstrategy.cpp(32): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\kranek\pzopencvhelloword\opecv1\comparewithcuttingstrategy.cpp(59): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\opecvprojects\opecv1\opecv1\comparewithcuttingstrategy.cpp(28): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\opecvprojects\opecv1\opecv1\comparewithcuttingstrategy.cpp(55): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  ComparatorStrategy.cpp
   Analyzer.cpp
   Generating Code...
-  opecv1.vcxproj -> C:\Users\Kranek\pzOpenCVHelloWord\x64\Debug\opecv1.exe
+  opecv1.vcxproj -> D:\opecvProjects\opecv1\x64\Debug\opecv1.exe

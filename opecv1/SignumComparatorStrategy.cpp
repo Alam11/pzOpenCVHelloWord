@@ -3,11 +3,6 @@
 #include "FramesUtils.h"
 
 
-void SignumComparatorStrategy::setRawData(IdealCycle dataArg)
-{
-	data = dataArg;
-}
-
 void SignumComparatorStrategy::compare()
 {
 	VideoCapture cap("Nagywanie_2016_03_10_13_25_29_948.mp4");

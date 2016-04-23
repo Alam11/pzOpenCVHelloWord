@@ -1,15 +1,11 @@
 #include "stdafx.h"
-//#include "ComparatorStrategy.h"
-//#include "IdealCycle.h"
+#include "ComparatorStrategy.h"
+#include "FramesUtils.h"
 
-/*
-class SignumComparatorStrategy : public ComparatorStrategy {
-public:
-	void compare() {
-		// oblicz signum z danych 
-		// porównaj z plikim na dysku
-	}
-private:
 
-};
-*/
+void ComparatorStrategy::setRawData(IdealCycle dataArg)
+{
+	data = dataArg;
+}
+
+

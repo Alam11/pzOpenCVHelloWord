@@ -1,8 +1,7 @@
-#include "IdealCycle.h"
-class SignumComparatorStrategy
+#include "ComparatorStrategy.h"
+class SignumComparatorStrategy : ComparatorStrategy
 {
 public:
-	void setRawData(IdealCycle data);
 	void compare();
 	SignumComparatorStrategy();
 	SignumComparatorStrategy(IdealCycle data);

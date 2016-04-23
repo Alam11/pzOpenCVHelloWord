@@ -71,8 +71,8 @@ int main(int argc, char* argv[])
 	Analyzer analyzer;
 	analyzer.setData(frames);
 	IdealCycle model = analyzer.createIdealCycle(); 
-	//SignumComparatorStrategy strategy = SignumComparatorStrategy(model);
-	CompareWithCuttingStrategy strategy = CompareWithCuttingStrategy(model);
+	SignumComparatorStrategy strategy = SignumComparatorStrategy(model);
+	//CompareWithCuttingStrategy strategy = CompareWithCuttingStrategy(model);
 	strategy.compare(); 
 	return 0;
 }
