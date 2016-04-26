@@ -6,6 +6,7 @@
 
 void CompareWithCuttingStrategy::compare()
 {
+	// ta impolementacja dodatkowo tnie podany filmik na osobne cykle i zapisuje je w folderze projaktowym 
 	VideoCapture cap("Nagywanie_2016_03_10_13_25_29_948.mp4");
 	namedWindow("myvideo", CV_WINDOW_AUTOSIZE); //create a window called "MyVideo"
 	bool starting = true;

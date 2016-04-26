@@ -8,9 +8,15 @@
 using namespace cv;
 using namespace std;
 
-const int EI = 3830422;
+// w tym pliku znajduj¹ siê funkcje które wstêpnie analizuj¹ wzorcowy filmik oraz 
+// tworz¹ idealny cykl klasa analyzer odpowiada uczeniu siê danego wzorca. 
+
+const int EI = 3830422; 
+// maksymalna odleg³oœæ do której uznajemy ¿e klatki z¹ równe, dla filmów kolorowych wiêcej 
+// a dla szarych trochê mniej 
 const int ET = 10;
 const int E_MAX_CYCLE_LENGTH = 150;
+// zale¿y od rodzaju cykli z którymi mamy oczynienia najlepiej przekazywana jako parametr z listy komend 
 
 vector<long> Analyzer::generateDifferenceVector(vector<Mat> frames) {
 	vector<long> res;
@@ -45,6 +51,11 @@ int findMinimumInInterval(int beg, int end, std::vector<long> data) {
 }
 
 vector<int> Analyzer::chooseCandidates(vector<long> framesDifference){
+	// metoda wybiera kandydatów na cykle.
+	// metoda ma dwa stany w stanie "powy¿ej" ró¿nica miêdzy pierwsz¹ klatk¹ i obecn¹ 
+	// jest wiêksza ni¿ epsilon a poni¿ej - mniejsza. funjcja wyszukuje indeksy
+	// w któreych stan siê zmienia nastêpnie wybierany jest punkt najmniej odleg³y od 
+	// klatki pocz¹tkowej i to on jest wyierany jako pocz¹tek nowego kandydata. 
 	bool isAbove = false; 
 	int end = 0;
 	int beg = 0; 
@@ -78,17 +89,6 @@ void Analyzer::setData(vector<Mat> frames)
 	data = frames;
 }
 
-int Analyzer::computeFitness(int beg, int end) {
-	int res = 0; 
-	int range = end - beg; 
-	for (int i = end + 1; i < data.size(); i++ ) {
-		res += distanceBetweenPoints(data[i], data[i%range + beg]); 
-	}
-	for (int i = beg - 1; i < 0; i--) {
-		res += distanceBetweenPoints(data[i], data[end - (end-i)%range]);
-	}
-	return res; 
-}
 
 vector<int> groupIndexes(vector<int> indexes, int groupSize) {
 	vector<int> res;
@@ -99,6 +99,10 @@ vector<int> groupIndexes(vector<int> indexes, int groupSize) {
 }
 
 vector<int> findCycles(vector<int> candidates, vector<Mat> frames) {
+	// funkcja przyjmuje kandydatów tzn, miejsca w których ffunkcja ró¿nic odi¹ga lokalne minima
+	// nastêpnnie  sprawdza ilu kandydatów trzba wzi¹œæ aby otrzymaæ c¹³y filmik 
+	// porównuje to przez funkcjê comparePeriods jeœli trzeba wzi¹œæ wiêcej ni¿ jednego kandydatea np.
+	// w przypadku wachade³ka funkcja group indexes robi co trzba 
 	int candidateEndIndex = 1; 
 	int referencedPeriodStartIndex = 1;
 	int referencedPeriodEndIndex = 2;
@@ -121,8 +125,13 @@ vector<int> findCycles(vector<int> candidates, vector<Mat> frames) {
 
 
 IdealCycle Analyzer::createIdealCycle(){
+	// to glówna metoda tej klasy, która wywo³uje pozosta³e metody
+	// generuje wykres ró¿nic i szuka kandydatów. nastêpnie sprawdza jaki wzór tworz¹ 
+	// kandydaci i potencjalnie ich grupuje i tworzy  nich idealny cykl. jeœli jakaœ strategia bêdzie potrzbowa³a 
+	// wiêcej danych o wzorcowym cyklu tutaj w³aœnie trzebs go nadpisaæ. 
 	vector<long> diff = generateDifferenceVector(data);
 	vector<int> candidates = chooseCandidates(diff);
+	// tutaj powinna byæ wywo³ana metoda find cycles 
 	IdealCycle model = IdealCycle(data, diff, candidates); 
 	return model;
 }

@@ -13,7 +13,7 @@ public:
 	std::vector<int> chooseCandidates(std::vector<long> framesDifference);
 	std::vector<long> Analyzer::generateDifferenceVector(std::vector<cv::Mat> frames);
 	void setData(std::vector<cv::Mat> data);
-	int computeFitness(int beg, int end);
+	//int computeFitness(int beg, int end);
 	IdealCycle createIdealCycle(); 
 	
 };

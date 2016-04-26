@@ -9,6 +9,9 @@ using namespace std;
 
 IdealCycle::IdealCycle(vector<Mat> framesArg, vector<long> differenceArg, vector<int> periodsArg)
 {
+	// klasa odpowiedzialna za wzorcowy cykl 
+	// tutaj trzymamy wszystkie dane ktre siê przydaj¹ 
+	// przy porównywaniu cykli
 	frames = framesArg;
 	difference = differenceArg;
 	periods = periodsArg;
