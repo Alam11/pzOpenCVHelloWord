@@ -46,12 +46,17 @@ bool comparePeriods(int beg1, int end1, int beg2, int end2, vector<Mat> frames) 
 	}
 	int shift = beg2 - beg1;
 	int intervalLength = min(end1 - beg1, end2 - beg2);
+	bool untouched = true; 
 	for (int i = beg1; i < beg1 + intervalLength; i++) {
-		cout << distanceBetweenFrames(frames[i], frames[i + shift]);
+		if (untouched) {
+			cout << distanceBetweenFrames(frames[i], frames[i + shift]) << endl; 
+			untouched = distanceBetweenFrames(frames[i], frames[i + shift]) < getEI();
+				
+		}
 	}
 	// TODO trzeba zdecydowaæ czy robimy sumê sprawdzamy czy jest tak 
 	// ogólnie dobrze  czy œredni¹ i czy tak przez ca³y czas mo¿ê byæ 
 	// trzeba zorobiæ odcienie szaroœci bo siê tego nie bêdzie wogle da³o debugowaæ 
-	return false;
+	return untouched;
 
 }
