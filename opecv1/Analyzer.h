@@ -2,6 +2,7 @@
 #include <iostream>
 #include "SignumComparatorStrategy.h"
 #include "CompareWithCuttingStrategy.h"
+#include <array>
 
 using namespace cv;
 using namespace std;
@@ -14,7 +15,7 @@ public:
 	std::vector<long> Analyzer::generateDifferenceVector(std::vector<cv::Mat> frames);
 	void setData(std::vector<cv::Mat> data);
 	//int computeFitness(int beg, int end);
-	IdealCycle createIdealCycle(); 
+	vector<array<long, 2>> createIdealCycle();
 	
 };
 
