@@ -107,12 +107,13 @@ vector<int> findCycles(vector<int> candidates, vector<Mat> frames) {
 	int referencedPeriodStartIndex = 1;
 	int referencedPeriodEndIndex = 2;
 	int numberOfPeriodsConsidered = 1; 
-	while ((candidates[candidateEndIndex] < E_MAX_CYCLE_LENGTH ) || (referencedPeriodEndIndex < candidates.size())){
+	while ((candidates[candidateEndIndex] < E_MAX_CYCLE_LENGTH ) && (referencedPeriodEndIndex < candidates.size())){
 		if (comparePeriods(0, candidates[candidateEndIndex], candidates[referencedPeriodStartIndex],
 			candidates[referencedPeriodEndIndex], frames)) {
 			referencedPeriodStartIndex += numberOfPeriodsConsidered;
 			referencedPeriodEndIndex += numberOfPeriodsConsidered; 
-		} {
+		} 
+		else {
 			candidateEndIndex = referencedPeriodEndIndex; 
 			referencedPeriodStartIndex = referencedPeriodEndIndex; // +1 ? zalezy jak chcemy sprawdzac periody 
 			numberOfPeriodsConsidered = referencedPeriodEndIndex; 
@@ -122,16 +123,85 @@ vector<int> findCycles(vector<int> candidates, vector<Mat> frames) {
 	return groupIndexes(candidates, numberOfPeriodsConsidered);
 }
 
+void getMaxMat(Mat &mat1, Mat &mat2) {
 
+}
 
-IdealCycle Analyzer::createIdealCycle(){
+void getMinMat(Mat &mat1, Mat &mat2) {
+
+}
+
+vector<array<long, 2>> Analyzer::createIdealCycle() {
 	// to glówna metoda tej klasy, która wywo³uje pozosta³e metody
 	// generuje wykres ró¿nic i szuka kandydatów. nastêpnie sprawdza jaki wzór tworz¹ 
 	// kandydaci i potencjalnie ich grupuje i tworzy  nich idealny cykl. jeœli jakaœ strategia bêdzie potrzbowa³a 
-	// wiêcej danych o wzorcowym cyklu tutaj w³aœnie trzebs go nadpisaæ. 
+	// wiêcej danych o wzorcowym cyklu tutaj w³aœnie trzebs go nadpisaæ.
+	//
+	// tworzenie idealnego cyklu polega na znalezieniu najd³u¿szego, utworzenia wstêpnego vectora,
+	// który zawiera wstêpne dozwolone wartoœci min/max, dziêki którym mo¿na uznaæ, czy cykl pasuje do idealnego,
+	// póŸniej przechodz¹c przez wszystkie cykle wybieramy dla ka¿dej klatki minimaln¹ i maksymaln¹ wartoœæ,
+	// uzupe³niaj¹c krótsze cykle z lewej i z prawej strony wartoœciami odpowiednio z pocz¹tku i koñca cyklu.
 	vector<long> diff = generateDifferenceVector(data);
 	vector<int> candidates = chooseCandidates(diff);
-	// tutaj powinna byæ wywo³ana metoda find cycles 
-	IdealCycle model = IdealCycle(data, diff, candidates); 
-	return model;
+	
+	vector<int> cycles = findCycles(candidates, data);
+
+	int maxLength = 0;
+	int maxLengthCycleStart = 0;
+	for (int i = 0; i < cycles.size() - 1; i++) {
+		int length = cycles[i + 1] - cycles[i];
+		if (maxLength < length) {
+			maxLength = length;
+			maxLengthCycleStart = cycles[i];
+		}
+	}
+
+	vector<array<long, 2>> idealCycle;
+	for (int i = cycles[maxLengthCycleStart]; i < maxLength; i++) {
+		array<long, 2> aux = {diff[i], diff[i]};
+		idealCycle.push_back(aux);
+	}
+
+	for (int i = 0; i < cycles.size() - 1; i++) {
+
+		if (i != maxLengthCycleStart) {
+
+			int shift = (maxLength - (cycles[i + 1] - cycles[i])) / 2;
+			for (int j = 0; j < maxLength; j++) {
+
+				long currentDiff;
+				if (j < shift) {
+					currentDiff = diff[cycles[i]];
+				}
+				else if (j >(cycles[i + 1] - cycles[i] + shift)) {
+					currentDiff = diff[cycles[i + 1]];
+				}
+				else {
+					currentDiff = diff[cycles[i] + j - shift];
+				}
+
+				if (currentDiff < idealCycle[j][0]) {
+					idealCycle[j][0] = currentDiff;
+				}
+				if (currentDiff > idealCycle[j][1]) {
+					idealCycle[j][1] = currentDiff;
+				}
+			}
+		}
+	}
+
+	/*ofstream minFile;
+	ofstream maxFile;
+	minFile.open("min.txt");
+	maxFile.open("max.txt");
+	for (int i = 0; i < idealCycle.size(); i++) {
+		minFile << idealCycle[i][0] << endl;
+		maxFile << idealCycle[i][1] << endl;
+	}
+	minFile.close();
+	maxFile.close();*/
+
+	//IdealCycle model = IdealCycle(data, diff, candidates); 
+	//return model;
+	return idealCycle;
 }
