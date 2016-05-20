@@ -59,7 +59,7 @@ SignumComparatorStrategy::SignumComparatorStrategy()
 {
 }
 
-SignumComparatorStrategy::SignumComparatorStrategy(IdealCycle dataArg)
+SignumComparatorStrategy::SignumComparatorStrategy(ModelForIdealCycles dataArg)
 {
 	data = dataArg;
 }

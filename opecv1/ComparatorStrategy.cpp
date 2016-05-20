@@ -5,7 +5,7 @@
 // ta klasa to abstrakcja dla wszystkich implementacji strategii porównywania 
 // 
 
-void ComparatorStrategy::setRawData(IdealCycle dataArg)
+void ComparatorStrategy::setRawData(ModelForIdealCycles dataArg)
 {
 	data = dataArg;
 }

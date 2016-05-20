@@ -4,8 +4,8 @@ class CompareWithCuttingStrategy : ComparatorStrategy
 public:
 	void compare();
 	CompareWithCuttingStrategy();
-	CompareWithCuttingStrategy(IdealCycle data);
+	CompareWithCuttingStrategy(ModelForIdealCycles data);
 	~CompareWithCuttingStrategy();
 private:
-	IdealCycle data;
+	ModelForIdealCycles data;
 };

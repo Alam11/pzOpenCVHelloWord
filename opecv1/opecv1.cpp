@@ -70,11 +70,11 @@ int main(int argc, char* argv[])
 	}
 	Analyzer analyzer;
 	analyzer.setData(frames);
-	//IdealCycle model = analyzer.createIdealCycle(); 
-	vector<array<long, 2>> model = analyzer.createIdealCycle(); 
-	//SignumComparatorStrategy strategy = SignumComparatorStrategy(model);
+	ModelForIdealCycles model = analyzer.createModelForIdealCycles(); 
+	vector<array<long, 2>> idealCycle = analyzer.createIdealCycle(model); 
+	SignumComparatorStrategy strategy = SignumComparatorStrategy(model);
 	//CompareWithCuttingStrategy strategy = CompareWithCuttingStrategy(model);
-	//strategy.compare(); 
+	strategy.compare(); 
 	return 0;
 }
 

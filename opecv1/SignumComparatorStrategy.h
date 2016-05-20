@@ -4,9 +4,9 @@ class SignumComparatorStrategy : ComparatorStrategy
 public:
 	void compare();
 	SignumComparatorStrategy();
-	SignumComparatorStrategy(IdealCycle data);
+	SignumComparatorStrategy(ModelForIdealCycles data);
 	~SignumComparatorStrategy();
 private:
-	IdealCycle data; 
+	ModelForIdealCycles data; 
 };
 

@@ -30,9 +30,6 @@
     <ClInclude Include="Analyzer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IdealCycle.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="SignumComparatorStrategy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -45,15 +42,15 @@
     <ClInclude Include="ComparatorStrategy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ModelForIdealCycles.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="opecv1.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="IdealCycle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SignumComparatorStrategy.cpp">
@@ -69,6 +66,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ComparatorStrategy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelForIdealCycles.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

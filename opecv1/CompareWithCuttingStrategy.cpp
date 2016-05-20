@@ -64,7 +64,7 @@ CompareWithCuttingStrategy::CompareWithCuttingStrategy()
 {
 }
 
-CompareWithCuttingStrategy::CompareWithCuttingStrategy(IdealCycle dataArg)
+CompareWithCuttingStrategy::CompareWithCuttingStrategy(ModelForIdealCycles dataArg)
 {
 	data = dataArg;
 }

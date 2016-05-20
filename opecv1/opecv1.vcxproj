@@ -160,7 +160,7 @@
     <ClInclude Include="Analyzer.h" />
     <ClInclude Include="ComparatorStrategy.h" />
     <ClInclude Include="FramesUtils.h" />
-    <ClInclude Include="IdealCycle.h" />
+    <ClInclude Include="ModelForIdealCycles.h" />
     <ClInclude Include="opecv1.h" />
     <ClInclude Include="CompareWithCuttingStrategy.h" />
     <ClInclude Include="SignumComparatorStrategy.h" />
@@ -172,7 +172,7 @@
     <ClCompile Include="ComparatorStrategy.cpp" />
     <ClCompile Include="CompareWithCuttingStrategy.cpp" />
     <ClCompile Include="FramesUtils.cpp" />
-    <ClCompile Include="IdealCycle.cpp" />
+    <ClCompile Include="ModelForIdealCycles.cpp" />
     <ClCompile Include="opecv1.cpp" />
     <ClCompile Include="SignumComparatorStrategy.cpp" />
     <ClCompile Include="stdafx.cpp">

@@ -131,20 +131,26 @@ void getMinMat(Mat &mat1, Mat &mat2) {
 
 }
 
-vector<array<long, 2>> Analyzer::createIdealCycle() {
+
+ModelForIdealCycles Analyzer::createModelForIdealCycles() {
 	// to glówna metoda tej klasy, która wywo³uje pozosta³e metody
 	// generuje wykres ró¿nic i szuka kandydatów. nastêpnie sprawdza jaki wzór tworz¹ 
 	// kandydaci i potencjalnie ich grupuje i tworzy  nich idealny cykl. jeœli jakaœ strategia bêdzie potrzbowa³a 
 	// wiêcej danych o wzorcowym cyklu tutaj w³aœnie trzebs go nadpisaæ.
-	//
+	vector<long> diff = generateDifferenceVector(data);
+	vector<int> candidates = chooseCandidates(diff);
+	vector<int> cycles = findCycles(candidates, data);
+	return ModelForIdealCycles(data, diff, cycles); 
+}
+
+
+vector<array<long, 2>> Analyzer::createIdealCycle(ModelForIdealCycles model) {
 	// tworzenie idealnego cyklu polega na znalezieniu najd³u¿szego, utworzenia wstêpnego vectora,
 	// który zawiera wstêpne dozwolone wartoœci min/max, dziêki którym mo¿na uznaæ, czy cykl pasuje do idealnego,
 	// póŸniej przechodz¹c przez wszystkie cykle wybieramy dla ka¿dej klatki minimaln¹ i maksymaln¹ wartoœæ,
 	// uzupe³niaj¹c krótsze cykle z lewej i z prawej strony wartoœciami odpowiednio z pocz¹tku i koñca cyklu.
-	vector<long> diff = generateDifferenceVector(data);
-	vector<int> candidates = chooseCandidates(diff);
-	
-	vector<int> cycles = findCycles(candidates, data);
+	vector<long> diff = model.difference; 
+	vector<int> cycles = model.periods; 
 
 	int maxLength = 0;
 	int maxLengthCycleStart = 0;
